@@ -1,0 +1,87 @@
+# MTK i500 SB52 Docker Build
+This project is to build MTK i500 SB52 in docker container.
+## _MTK i500 SB52_
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+
+
+## Features
+
+- **build.sh** :  shell script to build MTK SB52 yocto
+- **docker_run.sh** : shell script to run container (TODO: replace with compose yaml file)
+- **Dockerfile** :  to build docker image for MTK SB52 build environment
+- **sb52_env** : MTK SB52 yocto environment parameters which called by build.sh
+
+
+## Environments (Recommendations)
+- **[Linux AI Server]** IP : 140.96.98.144 : create new sudo user for build personal environment
+- **[tmux]** for background screen while long time build
+
+
+
+## Installation
+#### GIT Clone
+
+```sh
+git clone git@github.com:R300-AI/MTK-Docker.git
+```
+
+#### cp sb52-yocto-3.1.205.tar.xz.zip in MTK-Docker and unzip and untar
+```bash
+# password: vxeLHLvxHx9k3Knn
+$ unzip sb52-yocto-3.1.205.tar.xz.zip
+Archive:  sb52-yocto-3.1.205.tar.xz.zip
+[sb52-yocto-3.1.205.tar.xz.zip] sb52-yocto-3.1.205.tar.xz password: 
+  inflating: sb52-yocto-3.1.205.tar.xz
+$ tar -xf sb52-yocto-3.1.205.tar.xz
+$ ls
+LICENSE  README.md  sb52  sb52-yocto-3.1  sb52-yocto-3.1.205.tar.xz  sb52-yocto-3.1.205.tar.xz.zip
+### mv sb52-yocto-3.1 all files into sb52 folder
+$ mv sb52-yocto-3.1/* sb52/.
+$ rm -rf sb52-yocto-3.1 
+$ cd sb52
+$ ls
+build.sh  Dockerfile  docker_run.sh  gn  meta  prebuilt  README.md  sb52_env  src
+```
+## Start to Build SB52 in Container
+### 1. create new tmux screen (optional/recommendation)
+```bash
+$ tmux new -s sb52
+```
+![Alt text](images/tmux.png)
+### 2. create your own container with your username
+```bash
+### run docker_run.sh script
+$ ./docker_run.sh
+7837edb4ee772eb1686e18abfd4d984602c61b487ede2ca4cc6b1503c89e6dee
+### check container exist
+$ docker ps
+CONTAINER ID   IMAGE      COMMAND       CREATED          STATUS          PORTS     NAMES
+7837edb4ee77   sb52:dev   "/bin/bash"   23 seconds ago   Up 22 seconds             anitawu-sb52
+```
+### 3. enter your own container
+```bash
+$ docker exec -it anitawu-sb52 bash
+root@7837edb4ee77:/#
+```
+### 4. start to build sb52 in container
+```bash
+### 1. switch to dev user
+root@7837edb4ee77:/# su dev
+### 2. cd to dev home
+dev@7837edb4ee77:/$ cd
+### 3. cd to sb52-yocto folder
+dev@7837edb4ee77:~$ cd sb52-yocto/
+### 4. start to build sb52-yocto
+```
+### 5. exit tmux screen to do other thing with Ctrl+D (optional/recommendation)
+```bash
+[detached (from session sb52)]
+$
+```
+
+
+
+
+
+
+
