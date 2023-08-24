@@ -4,7 +4,7 @@ usrid=`id -u`
 grpid=`id -g`
 
 ### check container is ready
-if [ `docker ps | grep -c $container_name`=1 ]; then
+if [ `docker ps | grep -c $container_name` = 1 ]; then
     echo "set dev uid and gid"
     docker exec -d $container_name usermod -u $uesrid -g $grpid dev
 else

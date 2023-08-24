@@ -1,8 +1,7 @@
 # MTK i500 SB52 Docker Build
 This project is to build MTK i500 SB52 in docker container.
 ## _MTK i500 SB52_
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-
+_TODO_: CI/CD icons
 
 ## Features
 
@@ -42,6 +41,15 @@ $ cd sb52
 $ ls
 build.sh  Dockerfile  docker_run.sh  gn  meta  prebuilt  README.md  sb52_env  src
 ```
+## Build Sb52 Yocto Docker Images
+Skip this step if sb52 docker images exists
+```bash
+## docker images name is sb52:dev
+docker build -t sb52:dev . --no-cache
+## check sb52:dev has been created
+docker images 
+```
+
 ## Start to Build SB52 in Container
 ### 1. create new tmux screen (optional/recommendation)
 ```bash
