@@ -45,9 +45,16 @@ build.sh  Dockerfile  docker_run.sh  gn  meta  prebuilt  README.md  sb52_env  sr
 Skip this step if sb52 docker images exists
 ```bash
 ## docker images name is sb52:dev
-docker build -t sb52:dev . --no-cache
+$ docker build -t sb52:dev . --no-cache
 ## check sb52:dev has been created
-docker images 
+$ docker images
+REPOSITORY                TAG       IMAGE ID       CREATED         SIZE
+sb52                      dev       6a11b228b175   6 minutes ago   891MB
+build_linux               latest    0c8418b0afc8   7 minutes ago   2.13GB
+yolo                      latest    d8fce48fdf2a   31 hours ago    12.8GB
+ultralytics/ultralytics   latest    d8fce48fdf2a   31 hours ago    12.8GB
+ubuntu                    20.04     6df894023726   3 weeks ago     72.8MB
+ubuntu                    18.04     f9a80a55f492   2 months ago    63.2MB 
 ```
 
 ## Start to Build SB52 in Container
