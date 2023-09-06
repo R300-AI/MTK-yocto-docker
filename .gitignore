@@ -1,2 +1,5 @@
 *.zip
 *.tar.xz
+.repo
+src
+build

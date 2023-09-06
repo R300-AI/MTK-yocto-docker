@@ -27,9 +27,7 @@ RUN locale-gen en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-
-RUN DEBIAN_FRONTEND=noninteractive apt install -y android-tools-adb android-tools-fastboot
-
+ENV TZ="Asia/Taipei"
 
 USER $USER_NAME
 WORKDIR /home/dev
